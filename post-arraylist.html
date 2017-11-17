@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blog Juan Francisco">
+    <meta name="author" content="Juan Francisco">
+
+    <title>ArrayList Java - Juan Francisco</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet"
+      href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Juan Francisco</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Acerca de</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Collections -> ArrayList </h1>
+                        <h2 class="subheading">
+                          ArrayList forma parte de Collections Framework e
+                          implementa la interfaz List y pertenece al package
+                          java.util.</h2>
+                        <span class="meta">Posted by <a href="#">Juan Francisco</a>
+                          el 16 de Noviembre, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 class="section-heading">ArrayList</h2>
+                    <p>
+                        ArrayList forma parte de <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/collections/overview.html">
+                        Collections Framework</a> e implementa la interfaz List y pertenece al package <code>java.util</code>.
+                    </p>
+                    <p>
+                        Es una colección de tipo List de tamaño dinámico a diferencia de un array convencional,
+                        es decir un ArrayList puede modificar su tamaño a lo largo de la ejecución del programa y
+                        no necesita ser inicializado con un tamaño por defecto.
+                    </p>
+
+                    <h3>Inicializar un ArrayList</h3>
+                    <p>
+                        Un ArrayList se inicializa por defecto con un tamaño de
+                        0 elementos si no indicamos la cantidad de elementos en
+                        su construcción.
+                    </p>
+
+                    <pre>
+<code class="" >
+      // Inicializar una nueva lista de palabras
+      ArrayList&lt;String> palabras = new ArrayList&lt;String>();
+
+</code>
+
+                    </pre>
+
+                    <img class="img-responsive" src="img/inicializar-array.png" >
+
+                    <hr/>
+
+                    <h3>Inicializar un ArrayList con un tamaño inicial</h3>
+
+                    <p>
+                      Otra forma de crear un ArrayList es indicar su tamaño en
+                      el constructor. El siguiente código inicializa un ArrayList
+                      de Integer de 4 elementos.
+                    </p>
+
+                    <pre>
+<code class="" >
+      // Inicializar una nueva lista de 4 palabras
+      ArrayList&lt;String> palabras = new ArrayList&lt;String>(4);
+
+</code>
+                  </pre>
+
+                  <img class="img-responsive" src="img/inicializar-array-4.png" >
+                  <blockquote>Al indicar la cantidad de elementos iniciales, se
+                    crearan todas las posiciones internamente en null</blockquote>
+
+                  <hr/>
+
+                  <h3>Agregar Elementos a un ArrayList</h3>
+
+                  <p>
+                    Usando el método add, recibe como argumento el elemento que
+                    se desea agregar a la lista. El elemento se agregará en la
+                    siguiente posición disponible.
+                  </p>
+
+                  <pre>
+<code class="" >
+    // Inicializar una nueva lista de palabras
+    ArrayList&lt;String> palabras = new ArrayList&lt;String>();
+    palabras.add( "Hola" );
+    palabras.add( "Como estas ?" );
+    palabras.add( "Adios :)" );
+
+</code>
+                </pre>
+
+                  <img class="img-responsive" src="img/arraylist-add-2.gif" >
+
+                  <h3>Agregar un Elemento en una posición determinada</h3>
+
+                  <p>
+                    Sobrecarga del método add, indicando la posición
+                    (índice comienza en 0) y el elemento que se desea agregar.
+                  </p>
+
+                  <pre>
+<code class="" >
+    palabras.add( 2, "Que bien" );
+
+</code>
+                </pre>
+
+
+                  <img class="img-responsive" src="img/arraylist-add-3.gif" >
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+    <hr>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Juan Francisco 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
