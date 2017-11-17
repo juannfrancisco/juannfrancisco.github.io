@@ -145,7 +145,7 @@
                 </pre>
 
                   <img class="img-responsive" src="img/arraylist-add-2.gif" >
-
+                  <hr/>
                   <h3>Agregar un Elemento en una posición determinada</h3>
 
                   <p>
@@ -163,6 +163,89 @@
 
                   <img class="img-responsive" src="img/arraylist-add-3.gif" >
 
+                  <hr/>
+
+                  <h3>Obtener un Elemento de un ArrayList</h3>
+                  <p>
+                  Utilizando el método get, se obtiene el elemento según la
+                  posición indicada
+                 </p>
+                  <pre>
+<code class="" >
+    palabras.get( 0 );
+
+</code>
+                  </pre>
+                  <p>
+                  Si la posición que se desea acceder esta fuera del rango del
+                  array list, se lanzará una excepción
+                  <code>"java.lang.IndexOutOfBoundsException"</code>
+                  </p>
+
+                  <pre>
+<code class="" >
+    palabras.get( 6 );
+
+</code>
+                  </pre>
+
+                  <h3>Eliminar un Elemento de un ArrayList</h3>
+                  <p>
+                    Utilizando el método remove, elimina el elemento según la
+                    posición indicada.
+                  </p>
+                  <pre>
+<code class="" >
+    palabras.remove( 0 );
+
+</code>
+                  </pre>
+
+                  <h3>Iterar un ArrayList utilizando un ciclo For</h3>
+
+                  <p>El método size() retorna el tamaño total de la lista.
+                  </p>
+                  <pre>
+<code class="" >
+for( int i = 0; i < palabras.size() ; i++ ) {
+  System.out.println( palabras.get(i) );
+}
+</code>
+                </pre>
+
+
+                  <h3>Iterar un ArrayList utilizando un ciclo ForEach</h3>
+
+                  <pre>
+<code class="" >
+for( String palabra : palabras ){
+   System.out.println( palabra );
+}
+</code>
+                </pre>
+
+                  <h3>Iterar un ArrayList utilizando Iterator</h3>
+
+                  <pre>
+<code class="" >
+Iterator<String> iterador = palabras.iterator();
+while( iterador.hasNext() ){
+   System.out.println( iterador.next() );
+}
+</code>
+                </pre>
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
             </div>
@@ -173,32 +256,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+                  <ul class="list-inline text-center">
+                      <li>
+                          <a href="https://github.com/juannfrancisco">
+                              <span class="fa-stack fa-lg">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="https://juanfranncisco.wordpress.com/">
+                              <span class="fa-stack fa-lg">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="https://www.facebook.com/JotaMagno">
+                              <span class="fa-stack fa-lg">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="https://twitter.com/JotaMagno">
+                              <span class="fa-stack fa-lg">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                  </ul>
                     <p class="copyright text-muted">Copyright &copy; Juan Francisco 2016</p>
                 </div>
             </div>
