@@ -1,203 +1,533 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Blog - Programación Orientada a Objetos">
-    <meta name="author" content="Juan Francisco">
-
-    <title>Juan Francisco</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+<title>Juan Francisco</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Juan Francisco</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">Acerca de</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<nav id="mainNav" class="navbar navbar-default navbar-full">
+    <div class="container container-nav">
+        <div class="navbar-header">
+            <button aria-expanded="false" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html">
+                <img class="logo" src="images/logo.png" alt="Juan Francisco">
+            </a>
         </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Juan Francisco</h1>
-                        <hr class="small">
-                        <span class="subheading">Programación Orientada a Objetos con Java</span>
+        <div style="height: 1px;" role="main" aria-expanded="false" class="navbar-collapse collapse" id="bs">
+             <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="page-head" class="container-fluid inner-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="page-title" title="Hostino">Acerca de mi</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="about" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="about-details">
+                    <div class="text-holder">
+                        <h6>Juan Francisco.</h6>
+                        <p>
+                            Hola ! <br>
+                            Mi nombre es Juan  Francisco <br>
+                            Soy Ingeniero Informático. <br>
+                            Trabajo actualmente en el desarrollo <br>
+                            de productos transaccionales  <br>
+                            para el mundo financiero.
+                        </p>
+                        <i class="hno hno-arrow-right"></i>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+    <div class="slider-holder">
+        <div class="photo-slider">
+            <div><img src="images/bg1.png" alt=""></div>
+        </div>
+    </div>
+</div>
 
-    <!-- Main Content -->
+
+
+
+<div id="more-features" class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="post-arraylist.html">
-                        <h2 class="post-title">
-                            Collections > ArrayList
-                        </h2>
-                        <h3 class="post-subtitle">
-                          ArrayList forma parte de Collections Framework e
-                          implementa la interfaz List y pertenece al package
-                          java.util.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Juan Francisco</a> el 16 de Noviembre, 2017</p>
+            <div class="col-md-12">
+                <div class="row-title" title="Temas de Interés">A que me dedico</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="mfeature-box">
+                    <div class="mfeature-icon">
+                        <div class="icon-bg"><img src="images/cloud-light.png" alt=""></div>
+                        <div class="icon-img"><img src="images/feature3.png" alt=""></div>
+                    </div>
+                    <div class="mfeature-title">Desarrollo de Productos</div>
+                    <div class="mfeature-details">
+                        Mediante diferentes metodologias he colaborado en la concepción de productos para el sector
+                        financiero; y a su vez en el desarrollo de los mismo.
+                    </div>
                 </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="ejercicio-fecha.html">
-                        <h2 class="post-title">
-                            Programar la clase Fecha
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Este ejercicio, esta pensado para practicar la creación de objetos y métodos.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Juan Francisco</a> el 12 de Mayo, 2016</p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="mfeature-box">
+                    <div class="mfeature-icon">
+                        <div class="icon-bg"><img src="images/cloud-light.png" alt=""></div>
+                        <div class="icon-img"><img src="images/feature1.png" alt=""></div>
+                    </div>
+                    <div class="mfeature-title">Docencia</div>
+                    <div class="mfeature-details">
+                        He impartido diferentes curso de capacitación sobre programación y metodologías de desarrollo.
+                        En universidades como Universidad de Chile y Universidad Diego Portales.
+                    </div>
                 </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="ejercicio-promedio-notas.html">
-                        <h2 class="post-title">
-                            Calcular el promedio de notas.
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Este ejercicio, esta pensado para practicar la composición entre objetos.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Juan Francisco</a> el 12 de Mayo, 2016</p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="mfeature-box">
+                    <div class="mfeature-icon">
+                        <div class="icon-bg"><img src="images/cloud-light.png" alt=""></div>
+                        <div class="icon-img"><img src="images/feature5.png" alt=""></div>
+                    </div>
+                    <div class="mfeature-title">Desarrollo de Software</div>
+                    <div class="mfeature-details">
+                        Con mas de 7 años de experiencia en el desarrollo de software he colaborado a nivel de Arquitectura
+                        y desarrollo en la implementación de sistemas distribuidos utilizando tecnologías como Java EE, NodeJs,
+                        Erlang, entre otras.
+                    </div>
                 </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="ejercicio-cuenta-bancaria.html">
-                        <h2 class="post-title">
-                            Programar una cuenta bancaria
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Este ejercicio, esta pensado para practicar herencia.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Juan Francisco</a> el 12 de Mayo, 2016</p>
-                </div>
+            </div>
 
-
+            <div class="col-md-offset-4 col-sm-6 col-md-4">
+                <div class="mfeature-box">
+                    <div class="mfeature-icon">
+                        <div class="icon-bg"><img src="images/cloud-light.png" alt=""></div>
+                        <div class="icon-img"><img src="images/feature4.png" alt=""></div>
+                    </div>
+                    <div class="mfeature-title">Experiencia de Usuario</div>
+                    <div class="mfeature-details">
+                        En conjunto con el desarrollo de productos he desarrollado habilidades que permiten bridar una
+                        experiencia de usuario positiva utilizando metodologias como lean UX y agile UX; aportando a
+                        nivel de Usabilidad, Accesibilidad y Arquitectura de Información.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <hr>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="https://github.com/juannfrancisco">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://juanfranncisco.wordpress.com/">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/JotaMagno">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/JotaMagno">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
+<div id="page-head" class="container-fluid inner-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="page-title">Proyectos en los que he colaborado</div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Juan Francisco 2016</p>
+
+<div id="articles" class="container-fluid">
+    <div class="container">
+        <h3>Productos</h3>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/ptf.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-programa-tu-futuro.html">Multiservicios</a></div>
+                    <div class="article-date">2018 - 2017</div>
+                    <div class="article-text">
+                        Plataforma WEB modular, distribuida que permite la autogestion de usuarios, cuenta con modulos de email
+                        transaccional y marketing.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-programa-tu-futuro.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/ab.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-angular-bootstrap.html">Guibo</a></div>
+                    <div class="article-date">Diciembre, 2016</div>
+                    <div class="article-text">Guibo.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-angular-bootstrap.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/owasp.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-capacitacion-owasp.html">Sistema de Comisiones</a></div>
+                    <div class="article-date">Octubre, 2015</div>
+                    <div class="article-text">
+                        Owasp es un Proyecto abierto de seguridad en aplicaciones Web, formada por empresas,
+                        organizaciones educativas y particulares.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="post.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/infinit.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-capacitacion-desarrollo-aplicaciones-web.html">Infinit Gateway</a></div>
+                    <div class="article-date">2014-2015</div>
+                    <div class="article-text">
+                        Plataforma transaccional concurrente que permite el intercambio de mensajes de diferentes protocolos utilizados en sector financiero.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-capacitacion-desarrollo-aplicaciones-web.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<div id="articles" class="container-fluid">
+    <div class="container">
+        <h3>Docencia</h3>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/ptf.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-programa-tu-futuro.html">Desarrollo de Aplicaciones Web JEE - Programa tu Futuro</a></div>
+                    <div class="article-date">2017 - 2016</div>
+                    <div class="article-text">Programa Tu Futuro ofrece la posibilidad de insertar laboralmente a jóvenes estudiantes en un área de gran demanda de profesionales.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-programa-tu-futuro.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/ab.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-angular-bootstrap.html">Desarrollo de aplicaciones con Bootstrap y AngularJS</a></div>
+                    <div class="article-date">Diciembre, 2016</div>
+                    <div class="article-text">Programar aplicaciones web compatibles con múltiples dispositivos, adaptables a diferentes resoluciones, con interfaces interactivas.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-angular-bootstrap.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/owasp.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-capacitacion-owasp.html">Capacitación OWASP - Seguridad de Aplicaciones Web</a></div>
+                    <div class="article-date">Octubre, 2015</div>
+                    <div class="article-text">
+                        Owasp es un Proyecto abierto de seguridad en aplicaciones Web, formada por empresas,
+                        organizaciones educativas y particulares.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="post.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="article-summary">
+                    <div class="article-img"><img src="images/post/desarrollo-web.png" alt=""></div>
+                    <div class="article-title"><a href="posts/docencia/post-capacitacion-desarrollo-aplicaciones-web.html">Desarrollo de Aplicaciones Web</a></div>
+                    <div class="article-date">Octubre, 2015</div>
+                    <div class="article-text">Lorem ipsum dolor sit amet, consectetuer elit, sed diam nonummy nibh tincidunt ut laoreet dolore magna aliquam erat.
+                    </div>
+                    <div class="article-links">
+                        <div class="col-xs-6">
+                            <div class="socialshare-holder">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="readmore-holder">
+                                <a href="posts/docencia/post-capacitacion-desarrollo-aplicaciones-web.html" class="readmore-button">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div id="goals" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="text-slider">
+                    <div class="slide" title="Our Mission">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.<br>
+                            sed do eiusmod tempor incididunt ut labore.<br> quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    </div>
+                    <div class="slide" title="Our Vision">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.<br>
+                            sed do eiusmod tempor incididunt ut labore.<br> quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    </div>
+                    <div class="slide" title="Our Goals">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.<br>
+                            sed do eiusmod tempor incididunt ut labore.<br> quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="team" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row-title" title="Great people">Behind every great service, great people</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team1.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Chris Walker</div>
+                    <div class="person-title">CEO & CO-Founder</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team2.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Jane Donald</div>
+                    <div class="person-title">Client service</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team3.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">David Adams</div>
+                    <div class="person-title">Server Admin</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team4.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Rose Masso</div>
+                    <div class="person-title">Quality Assurance</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team5.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Travis Walker</div>
+                    <div class="person-title">CO-Founder</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team6.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Bella Vayner</div>
+                    <div class="person-title">Client service</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team7.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Mary Wilson</div>
+                    <div class="person-title">Client service</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="person-box">
+                    <div class="person-icon">
+                        <div class="person-img"><img src="images/team8.jpg" alt="" /></div>
+                    </div>
+                    <div class="person-name">Craig Davids</div>
+                    <div class="person-title">Web Master</div>
+                    <div class="person-social">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bluebg-info" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text">Ready to rock with Hostino,<br>
+Register Today.</div>
+                <a href="signup.html" class="white-button">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="footer-menu-holder">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="footer-menu-holder">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="footer-menu-holder">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="address-holder">
+                    <div class="phone"><i class="fa fa-phone"></i> +56 9 71393 066</div>
+                    <div class="email"><i class="fa fa-envelope"></i>juan.maldonado.leon@gmail.com</div>
+                    <div class="address">
+                        <i class="fa fa-map-marker"></i>
+                        <div>Santiago de Chile<br></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social row">
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/main.js"></script>
 </body>
-
 </html>
