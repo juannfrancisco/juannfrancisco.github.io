@@ -116,3 +116,13 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+docker run --name CMR_COMISIONES \
+         --shm-size=1g -d \
+         -p 1521:1521 -p 8080:8080 \
+         -e ORACLE_PWD=COMISIONES2018 \
+         -v /u01/app/oracle/oradata \
+         -v /Users/jmaldonado/Desarrollo/clientes/cmr/repo-productos/comisiones-runtime-batch/image/database/setup:/u01/app/oracle/scripts/setup \
+         comisiones/cmr-database:11.2.0.2-xe
