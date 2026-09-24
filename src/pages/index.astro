@@ -122,6 +122,15 @@ const year = new Date().getFullYear();
       >
         {profile.email}
       </a>
+      <ul data-reveal class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {profile.links.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener" class="font-medium text-zinc-700 transition hover:text-accent-600 dark:text-zinc-300 dark:hover:text-accent-400">
+              {link.label} ↗
+            </a>
+          </li>
+        ))}
+      </ul>
       <p data-reveal class="mt-6 text-sm text-zinc-500">{profile.location}</p>
       </div>
     </Section>

@@ -6,6 +6,7 @@ export const profile = {
   location: 'Santiago, Chile',
   email: 'juan.maldonado.leon@gmail.com',
   links: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/juannfrancisco' },
     { label: 'GitHub', href: 'https://github.com/juannfrancisco' },
     { label: 'Zentagroup', href: 'https://www.zentagroup.com' },
   ],
