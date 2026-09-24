@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --color-accent-400: oklch(78.9% 0.154 211.53);
+  --color-accent-500: oklch(71.5% 0.143 215.221);
+  --color-accent-600: oklch(60.9% 0.126 221.723);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.motion [data-hero],
+.motion [data-hero-photo],
+.motion [data-reveal] {
+  opacity: 0;
+}
+
+.motion [data-timeline-line] {
+  transform: scaleY(0);
+}

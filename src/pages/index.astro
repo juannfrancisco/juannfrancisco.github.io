@@ -1,0 +1,140 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import photo from '../assets/juan-francisco.png';
+import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
+import { about, certifications, focus, profile, projects, teaching } from '../data/profile';
+
+const year = new Date().getFullYear();
+---
+
+<Base>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="mx-auto max-w-5xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28">
+      <div class="flex flex-col-reverse gap-10 sm:flex-row sm:items-center sm:justify-between">
+        <div class="max-w-2xl">
+          <p data-hero class="font-mono text-sm text-accent-600 dark:text-accent-400">Hola, soy</p>
+          <h1 data-hero class="mt-3 text-4xl font-bold tracking-tight text-balance sm:text-6xl">{profile.name}</h1>
+          <p data-hero class="mt-4 text-xl font-medium text-zinc-700 dark:text-zinc-300">{profile.role}</p>
+          <p data-hero class="mt-3 text-lg text-pretty text-zinc-600 dark:text-zinc-400">{profile.headline}</p>
+          <div data-hero class="mt-8 flex flex-wrap gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              class="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            >
+              Escríbeme
+            </a>
+            {profile.links.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener"
+                class="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium transition hover:border-zinc-900 dark:border-zinc-700 dark:hover:border-zinc-300"
+              >
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+        <div data-hero-photo class="relative size-36 shrink-0 sm:size-52">
+          <span data-pulse aria-hidden="true" class="absolute inset-0 rounded-full border-2 border-accent-500 opacity-0"></span>
+          <Image
+            src={photo}
+            alt={`Foto de ${profile.name}`}
+            widths={[288, 416, 624]}
+            sizes="(min-width: 640px) 208px, 144px"
+            loading="eager"
+            fetchpriority="high"
+            class="relative size-full rounded-full object-cover ring-4 ring-accent-500/20"
+          />
+        </div>
+      </div>
+    </section>
+
+    <Section id="sobre-mi" index="01" title="Sobre mí">
+      <div data-reveal-group class="space-y-4 text-lg text-zinc-600 dark:text-zinc-400">
+        {about.map((p) => <p data-reveal class="text-pretty">{p}</p>)}
+      </div>
+
+      <div data-reveal-group class="mt-12 grid gap-4 sm:grid-cols-2">
+        {focus.map((item) => (
+          <div data-reveal class="rounded-2xl border border-zinc-200 bg-white p-6 sm:last:odd:col-span-2 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <h3 class="font-semibold">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="mt-16 font-mono text-xs tracking-widest text-zinc-500 uppercase">Certificaciones</h3>
+      <ul data-reveal-group class="mt-4 divide-y divide-zinc-200 dark:divide-zinc-800">
+        {certifications.map((cert) => (
+          <li data-reveal class="flex items-center gap-4 py-4">
+            <img src={cert.image} alt="" width="48" height="48" loading="lazy" class="size-12 rounded-lg bg-white object-contain p-1" />
+            <div class="flex-1">
+              <p class="font-medium">{cert.title}</p>
+              <p class="text-sm text-zinc-500">{cert.issuer}</p>
+            </div>
+            <span class="font-mono text-sm text-zinc-500">{cert.year}</span>
+          </li>
+        ))}
+      </ul>
+    </Section>
+
+    <Section id="proyectos" index="02" title="Proyectos">
+      <div data-reveal-group class="grid gap-4 sm:grid-cols-2">
+        {projects.map((project) => (
+          <article data-reveal class="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-accent-500/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <p class="font-mono text-xs text-zinc-500">{project.period}</p>
+            <h3 class="mt-2 text-lg font-semibold">{project.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{project.body}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section id="docencia" index="03" title="Docencia">
+      <ol data-timeline data-reveal-group class="relative space-y-8 border-l border-zinc-200 pl-6 dark:border-zinc-800">
+        <span data-timeline-line aria-hidden="true" class="absolute top-0 -left-px h-full w-px origin-top bg-accent-500"></span>
+        {teaching.map((item) => (
+          <li data-reveal class="relative">
+            <span class="absolute top-1.5 -left-[1.9rem] size-2.5 rounded-full bg-accent-500 ring-4 ring-zinc-50 dark:ring-zinc-950"></span>
+            <p class="font-mono text-xs text-zinc-500">{item.period}</p>
+            <h3 class="mt-1 font-semibold">{item.title}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">{item.org}</p>
+          </li>
+        ))}
+      </ol>
+    </Section>
+
+    <Section id="contacto" index="04" title="Contacto">
+      <div data-reveal-group>
+      <p data-reveal class="text-lg text-pretty text-zinc-600 dark:text-zinc-400">
+        ¿Tienes un proyecto, una charla o una idea que quieras conversar? Escríbeme.
+      </p>
+      <a
+        data-reveal
+        href={`mailto:${profile.email}`}
+        class="mt-6 inline-block text-2xl font-semibold tracking-tight underline decoration-accent-500 decoration-2 underline-offset-8 transition hover:text-accent-600 sm:text-3xl dark:hover:text-accent-400"
+      >
+        {profile.email}
+      </a>
+      <p data-reveal class="mt-6 text-sm text-zinc-500">{profile.location}</p>
+      </div>
+    </Section>
+  </main>
+
+  <footer class="border-t border-zinc-200 py-8 dark:border-zinc-800">
+    <div class="mx-auto flex max-w-5xl flex-wrap justify-between gap-4 px-4 text-sm text-zinc-500 sm:px-6">
+      <p>© {year} {profile.name}</p>
+      <p class="font-mono">Hecho con Astro + Tailwind</p>
+    </div>
+  </footer>
+</Base>
+
+<script>
+  import '../scripts/motion';
+</script>
