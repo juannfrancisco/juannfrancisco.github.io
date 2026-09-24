@@ -42,6 +42,12 @@ export const focus = [
 
 export const certifications = [
   {
+    title: 'Professional Cloud Architect Certification',
+    issuer: 'Google Cloud',
+    year: 2026,
+    image: '/images/professional-cloud-architect-2.png',
+  },
+  {
     title: 'Professional Cloud Architect',
     issuer: 'Google Cloud',
     year: 2022,
