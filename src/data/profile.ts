@@ -69,6 +69,11 @@ export const certifications = [
     year: 2018,
     image: '/images/associate-cloud-engineer.png',
   },
+  {
+    title: 'Java SE 7 Programmer I',
+    issuer: 'Oracle Certified',
+    year: 2014,
+  },
 ];
 
 export const projects = [
@@ -95,6 +100,11 @@ export const projects = [
 ];
 
 export const teaching = [
+  {
+    title: 'Bootcamp: desarrollo backend',
+    org: 'Universidad de Chile – Facultad de Ciencias Físicas y Matemáticas',
+    period: '2023 – 2026',
+  },
   {
     title: 'Bootcamp: aplicaciones web con Angular',
     org: 'Ranto',
