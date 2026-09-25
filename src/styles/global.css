@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --color-accent-400: oklch(78.9% 0.154 211.53);
+  --color-accent-500: oklch(71.5% 0.143 215.221);
+  --color-accent-600: oklch(60.9% 0.126 221.723);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Estado inicial de los elementos animados (solo si hay animación activa) */
+.motion [data-hero],
+.motion [data-hero-name],
+.motion [data-hero-photo],
+.motion [data-split],
+.motion [data-index],
+.motion [data-reveal],
+.motion [data-reveal-self],
+.motion [data-timeline-item] {
+  opacity: 0;
+}
+
+.motion [data-timeline-line] {
+  transform: scaleY(0);
+}
+
+.motion [data-accent-line] {
+  transform: scaleX(0);
+}

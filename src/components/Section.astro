@@ -1,0 +1,33 @@
+---
+interface Props {
+  id: string;
+  index: string;
+  title: string;
+  kicker?: string;
+}
+
+const { id, index, title, kicker } = Astro.props;
+---
+
+<section id={id} data-section class="relative py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent dark:via-zinc-800"></div>
+  </div>
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 pt-16 sm:px-6 sm:pt-20 md:grid-cols-[15rem_1fr] md:gap-16">
+    <header class="md:sticky md:top-28 md:self-start">
+      <span
+        data-index
+        aria-hidden="true"
+        class="block font-mono text-6xl leading-none font-bold text-transparent [-webkit-text-stroke:1px_var(--color-zinc-300)] sm:text-7xl dark:[-webkit-text-stroke:1px_var(--color-zinc-700)]"
+      >
+        {index}
+      </span>
+      <h2 data-split class="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+      <span data-accent-line aria-hidden="true" class="mt-5 block h-0.5 w-12 origin-left rounded-full bg-accent-500"></span>
+      {kicker && <p data-reveal-self class="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">{kicker}</p>}
+    </header>
+    <div>
+      <slot />
+    </div>
+  </div>
+</section>

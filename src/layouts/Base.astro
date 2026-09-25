@@ -1,0 +1,48 @@
+---
+import { getImage } from 'astro:assets';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import photo from '../assets/juan-francisco.png';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Juan Francisco Maldonado',
+  description = 'Ingeniero informático y CTO en Zentagroup. Arquitectura cloud, producto y equipos de software.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = await getImage({ src: photo, width: 1200, format: 'jpg' });
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage.src, Astro.site)} />
+    <script is:inline>
+      // Activa las animaciones solo si el usuario no pidió reducir movimiento.
+      // Si el script de animación no carga, se muestra el contenido igual.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion');
+        setTimeout(() => {
+          if (!window.__motionReady) document.documentElement.classList.remove('motion');
+        }, 2500);
+      }
+    </script>
+  </head>
+  <body class="min-h-screen overflow-x-clip bg-zinc-50 font-sans text-zinc-900 antialiased selection:bg-accent-500/25 dark:bg-zinc-950 dark:text-zinc-100">
+    <slot />
+  </body>
+</html>
