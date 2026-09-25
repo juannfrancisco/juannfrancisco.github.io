@@ -31,8 +31,18 @@ const ogImage = await getImage({ src: photo, width: 1200, format: 'jpg' });
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(ogImage.src, Astro.site)} />
+    <script is:inline>
+      // Activa las animaciones solo si el usuario no pidió reducir movimiento.
+      // Si el script de animación no carga, se muestra el contenido igual.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion');
+        setTimeout(() => {
+          if (!window.__motionReady) document.documentElement.classList.remove('motion');
+        }, 2500);
+      }
+    </script>
   </head>
-  <body class="min-h-screen bg-zinc-50 font-sans text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+  <body class="min-h-screen overflow-x-clip bg-zinc-50 font-sans text-zinc-900 antialiased selection:bg-accent-500/25 dark:bg-zinc-950 dark:text-zinc-100">
     <slot />
   </body>
 </html>
