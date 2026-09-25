@@ -14,10 +14,14 @@ export const profile = {
 
 export const about = [
   'Soy ingeniero informático y actualmente me desempeño como Chief Technology Officer (CTO) en Zentagroup.',
-  'Mi trabajo se mueve entre la arquitectura de sistemas distribuidos, la nube y el acompañamiento a clientes: entender el negocio, diseñar la solución y ayudar a los equipos a construirla bien.',
+  'Mi trabajo se mueve entre la arquitectura de sistemas distribuidos, la nube y el acompañamiento a clientes: entender el negocio, diseñar la solución y ayudar a los equipos tecnologicos a construirla con los mas altos estándares de la industria.',
 ];
 
 export const focus = [
+  {
+    title: 'Dirección tecnológica',
+    body: 'Como CTO de Zentagroup defino la estrategia tecnológica de la compañía, las prácticas de ingeniería y la oferta de servicios, alineando a los equipos técnicos con los objetivos del negocio.',
+  },
   {
     title: 'Liderazgo de arquitectura',
     body: 'Lideré el área de arquitectura de Zentagroup, asegurando la calidad de los servicios profesionales y creando ofertas como Cloud Foundations, optimización cloud y servicios de migración.',
