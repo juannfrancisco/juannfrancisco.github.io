@@ -1,0 +1,117 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ogBlog from '../assets/og-blog.svg';
+import { profile } from '../data/profile';
+import { formatDate } from '../utils/blog';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+  readingTime: number;
+  heroImage?: ImageMetadata;
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags = [],
+  readingTime,
+  heroImage,
+} = Astro.props;
+---
+
+<Base
+  title={`${title} — ${profile.name}`}
+  description={description}
+  image={heroImage ?? ogBlog}
+  ogType="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  tags={tags}
+>
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[36rem] overflow-hidden">
+    <div class="absolute top-12 left-1/2 size-[28rem] -translate-x-1/2 rounded-full bg-accent-500/10 blur-3xl"></div>
+  </div>
+
+  <Header />
+
+  <main class="mx-auto max-w-3xl px-4 pt-12 pb-24 sm:px-6 sm:pt-16">
+    <a
+      href="/blog/"
+      class="group inline-flex items-center gap-2 font-mono text-xs text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+    >
+      <span aria-hidden="true" class="transition-transform group-hover:-translate-x-0.5">←</span>
+      Volver al blog
+    </a>
+
+    <article class="mt-8">
+      <header class="border-b border-zinc-200 pb-8 dark:border-zinc-800">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-zinc-500 dark:text-zinc-400">
+          <time datetime={pubDate.toISOString()} class="text-accent-600 dark:text-accent-400">
+            {formatDate(pubDate)}
+          </time>
+          <span aria-hidden="true">·</span>
+          <span>{readingTime} min de lectura</span>
+          {updatedDate && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>Actualizado el {formatDate(updatedDate)}</span>
+            </>
+          )}
+        </div>
+
+        <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight text-balance sm:text-5xl">
+          {title}
+        </h1>
+
+        <p class="mt-4 text-lg leading-relaxed text-pretty text-zinc-600 dark:text-zinc-400">
+          {description}
+        </p>
+
+        {tags.length > 0 && (
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li class="rounded-full border border-zinc-200 bg-white/60 px-2.5 py-0.5 font-mono text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400">
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </header>
+
+      <div
+        class="prose prose-zinc dark:prose-invert mt-10 max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent-600 prose-a:decoration-accent-500/40 prose-a:underline-offset-4 hover:prose-a:decoration-accent-500 dark:prose-a:text-accent-400 prose-code:rounded prose-code:bg-zinc-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-[0.875em] prose-code:font-normal prose-code:before:content-none prose-code:after:content-none dark:prose-code:bg-zinc-800/80 prose-pre:rounded-2xl prose-pre:border prose-pre:border-zinc-200 dark:prose-pre:border-zinc-800 prose-img:rounded-2xl"
+      >
+        <slot />
+      </div>
+
+      <footer class="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a
+            href="/blog/"
+            class="group inline-flex items-center gap-2 font-mono text-sm font-medium text-zinc-700 transition-colors hover:text-accent-600 dark:text-zinc-300 dark:hover:text-accent-400"
+          >
+            <span aria-hidden="true" class="transition-transform group-hover:-translate-x-0.5">←</span>
+            Todos los artículos
+          </a>
+          <a
+            href={`mailto:${profile.email}?subject=${encodeURIComponent(`Sobre: ${title}`)}`}
+            class="font-mono text-xs text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+          >
+            Responder por correo →
+          </a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <Footer />
+</Base>

@@ -1,0 +1,61 @@
+---
+title: "Arquitectura pragmática: por qué abro este espacio"
+description: "Notas sobre decisiones técnicas, sistemas distribuidos en la nube y cómo alinear la arquitectura de software con los objetivos del negocio y las personas."
+pubDate: 2026-11-11
+tags: ["arquitectura", "cloud", "liderazgo"]
+---
+
+import Callout from '../../../components/Callout.astro';
+import diagrama from './diagrama-flujo.svg';
+
+En el día a día liderando tecnología y acompañando equipos de ingeniería, gran parte del trabajo más valioso ocurre en conversaciones sobre **trade-offs**: cuándo simplificar un diseño, cuándo invertir en resiliencia y cómo hacer que una plataforma sea operable por las personas que la mantienen.
+
+Abro este blog como una bitácora técnica para documentar esas decisiones, compartir patrones de arquitectura cloud y registrar aprendizajes reales construyendo productos y equipos.
+
+## El ciclo de una decisión técnica
+
+Una buena arquitectura rara vez empieza por la herramienta. Empieza por entender las restricciones del negocio, traducirlas en contratos claros y asegurar que el equipo pueda operar el sistema en producción sin fricción:
+
+<img src={diagrama.src} width={diagrama.width} height={diagrama.height} alt="Flujo entre contexto de negocio, decisiones de arquitectura y operación de equipos" loading="lazy" />
+
+<Callout type="tip" title="Principio guía">
+  La arquitectura no es el diagrama que dibujamos al inicio del proyecto, sino el conjunto de decisiones difíciles de revertir que tomamos mientras el producto evoluciona.
+</Callout>
+
+## Documentar decisiones como código (ADRs)
+
+Una de las prácticas con mayor retorno en equipos de software es registrar las decisiones de arquitectura (*Architecture Decision Records*) junto al código. Incluso una estructura mínima permite conservar el contexto meses después:
+
+```typescript
+export interface ArchitectureDecisionRecord {
+  id: `ADR-${number}`;
+  title: string;
+  status: 'proposed' | 'accepted' | 'superseded';
+  context: string;
+  decision: string;
+  consequences: {
+    positive: string[];
+    tradeOffs: string[];
+  };
+}
+
+export const adr001: ArchitectureDecisionRecord = {
+  id: 'ADR-001',
+  title: 'Preferir servicios gestionados antes de operar clústeres propios',
+  status: 'accepted',
+  context: 'El equipo necesita entregar valor continuo con carga operativa acotada.',
+  decision: 'Desplegar cargas sin estado en Cloud Run con pipelines declarativos.',
+  consequences: {
+    positive: ['Escalado a cero y menor carga de mantenimiento', 'Despliegues en minutos'],
+    tradeOffs: ['Límites de tiempo por petición y acoplamiento al runtime serverless'],
+  },
+};
+```
+
+## Qué encontrarás en próximas entregas
+
+1. **Arquitectura Cloud & Plataformas:** diseño de *Cloud Foundations*, costos, seguridad y observabilidad en producción.
+2. **Ingeniería de Producto & IA:** cómo integrar modelos generativos y agentes en flujos empresariales con gobernanza y métricas claras.
+3. **Liderazgo Técnico & Equipos:** estructura de equipos, prácticas de ingeniería y aprendizajes desde la docencia y la dirección tecnológica.
+
+Si quieres conversar sobre alguno de estos temas o compartir tu perspectiva, siempre puedes escribirme o suscribirte mediante el feed [RSS](/rss.xml).

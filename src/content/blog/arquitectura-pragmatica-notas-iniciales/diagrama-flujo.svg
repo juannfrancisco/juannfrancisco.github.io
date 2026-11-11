@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="760" height="220">
+  <rect width="760" height="220" rx="16" fill="#09090b"/>
+  <rect x="1" y="1" width="758" height="218" rx="15" fill="none" stroke="#27272a" stroke-width="1.5"/>
+
+  <!-- Nodo 1: Negocio -->
+  <rect x="40" y="65" width="180" height="90" rx="12" fill="#18181b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="130" y="103" text-anchor="middle" fill="#06b6d4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">01 · CONTEXTO</text>
+  <text x="130" y="128" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600">Negocio &amp; Límites</text>
+
+  <!-- Flecha 1 -->
+  <line x1="220" y1="110" x2="282" y2="110" stroke="#52525b" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <polygon points="282,106 290,110 282,114" fill="#06b6d4"/>
+
+  <!-- Nodo 2: Arquitectura -->
+  <rect x="290" y="65" width="180" height="90" rx="12" fill="#18181b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="380" y="103" text-anchor="middle" fill="#06b6d4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">02 · DECISIONES</text>
+  <text x="380" y="128" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600">Trade-offs &amp; ADRs</text>
+
+  <!-- Flecha 2 -->
+  <line x1="470" y1="110" x2="532" y2="110" stroke="#52525b" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <polygon points="532,106 540,110 532,114" fill="#06b6d4"/>
+
+  <!-- Nodo 3: Equipos -->
+  <rect x="540" y="65" width="180" height="90" rx="12" fill="#18181b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="630" y="103" text-anchor="middle" fill="#06b6d4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">03 · EJECUCIÓN</text>
+  <text x="630" y="128" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600">Equipos &amp; Operación</text>
+</svg>
