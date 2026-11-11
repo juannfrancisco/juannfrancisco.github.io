@@ -1,11 +1,15 @@
 ---
 import { profile } from '../data/profile';
 
+const pathname = Astro.url.pathname;
+const isBlog = pathname === '/blog' || pathname.startsWith('/blog/');
+
 const nav = [
-  { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Docencia', href: '#docencia' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Sobre mí', href: '/#sobre-mi', id: 'sobre-mi' },
+  { label: 'Proyectos', href: '/#proyectos', id: 'proyectos' },
+  { label: 'Docencia', href: '/#docencia', id: 'docencia' },
+  { label: 'Blog', href: '/blog/', id: 'blog', active: isBlog },
+  { label: 'Contacto', href: '/#contacto', id: 'contacto' },
 ];
 ---
 
@@ -18,19 +22,49 @@ const nav = [
       {nav.map((item) => (
         <a
           href={item.href}
-          data-nav={item.href.slice(1)}
+          data-nav={item.id}
+          data-active={item.active ? '' : undefined}
           class="rounded-full px-3 py-1.5 transition-colors hover:text-zinc-900 data-active:bg-zinc-900/5 data-active:text-zinc-900 dark:hover:text-white dark:data-active:bg-white/10 dark:data-active:text-white"
         >
           {item.label}
         </a>
       ))}
     </nav>
-    <a
-      href="#contacto"
-      class="rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-medium text-white sm:hidden dark:bg-white dark:text-zinc-900"
-    >
-      Contacto
-    </a>
+    <div class="flex items-center gap-2 sm:hidden">
+      <a
+        href="/blog/"
+        data-active={isBlog ? '' : undefined}
+        class="rounded-full px-3 py-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 data-active:bg-zinc-900/5 data-active:text-zinc-900 dark:text-zinc-400 dark:hover:text-white dark:data-active:bg-white/10 dark:data-active:text-white"
+      >
+        Blog
+      </a>
+      <a
+        href="/#contacto"
+        class="rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-medium text-white dark:bg-white dark:text-zinc-900"
+      >
+        Contacto
+      </a>
+    </div>
   </div>
   <span data-progress aria-hidden="true" class="absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-accent-500"></span>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const progress = document.querySelector<HTMLElement>('[data-progress]');
+
+  const updateScroll = () => {
+    if (header) {
+      header.toggleAttribute('data-scrolled', window.scrollY > 8);
+    }
+    if (progress) {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      progress.style.transform = `scaleX(${ratio})`;
+    }
+  };
+
+  updateScroll();
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  window.addEventListener('resize', updateScroll, { passive: true });
+</script>

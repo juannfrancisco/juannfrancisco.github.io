@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import photo from '../assets/juan-francisco.png';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
 import { about, certifications, focus, profile, projects, teaching } from '../data/profile';
 
-const year = new Date().getFullYear();
 const pad = (n: number) => String(n + 1).padStart(2, '0');
 ---
 
@@ -218,12 +218,7 @@ const pad = (n: number) => String(n + 1).padStart(2, '0');
     </section>
   </main>
 
-  <footer class="pb-10">
-    <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-4 text-sm text-zinc-500 sm:px-6">
-      <p>© {year} {profile.name}</p>
-      <p class="font-mono">Hecho con Astro + Tailwind + Anime.js</p>
-    </div>
-  </footer>
+  <Footer />
 </Base>
 
 <script>

@@ -10,15 +10,7 @@ const root = document.documentElement;
 const $ = <T extends Element = HTMLElement>(sel: string) => document.querySelector<T>(sel);
 const $$ = <T extends Element = HTMLElement>(sel: string) => [...document.querySelectorAll<T>(sel)];
 
-// Encabezado: fondo al hacer scroll y enlace activo según la sección visible.
-// No es animación decorativa, así que corre aunque se reduzca el movimiento.
-const header = $('[data-header]');
-if (header) {
-  const update = () => header.toggleAttribute('data-scrolled', window.scrollY > 8);
-  update();
-  window.addEventListener('scroll', update, { passive: true });
-}
-
+// Enlace activo según la sección visible en la portada.
 $$('[data-section]').forEach((section) => {
   const link = $(`[data-nav="${section.id}"]`);
   if (!link) return;
@@ -33,13 +25,6 @@ $$('[data-section]').forEach((section) => {
 
 if (root.classList.contains('motion')) {
   window.__motionReady = true;
-
-  // Barra de progreso de lectura bajo el encabezado
-  animate('[data-progress]', {
-    scaleX: [0, 1],
-    ease: 'linear',
-    autoplay: onScroll({ target: document.body, enter: 'top top', leave: 'bottom bottom', sync: 0.4 }),
-  });
 
   // ─── Presentación ───────────────────────────────────────────────
   const name = $('[data-hero-name]');
