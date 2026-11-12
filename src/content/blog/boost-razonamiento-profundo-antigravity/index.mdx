@@ -1,0 +1,123 @@
+---
+title: "Cómo funciona /boost en Google Antigravity: razonamiento profundo multiagente"
+description: "Un recorrido técnico por el pipeline de tres fases de /boost en Google Antigravity: cómo un orquestador divide problemas complejos, coordina subagentes en worktrees efímeros aislados y valida cada entrega contra la suite completa de tests."
+pubDate: 2026-11-11T12:00:00Z
+tags: ["ia", "agentes", "arquitectura", "antigravity"]
+---
+
+import Callout from '../../../components/Callout.astro';
+import diagrama from './boost-pipeline.svg';
+
+En el desarrollo de software moderno no todos los problemas requieren el mismo nivel de cómputo ni la misma arquitectura de asistencia. Gran parte del trabajo diario —navegar un repositorio, implementar un endpoint o iterar sobre un componente— se resuelve mejor con un ciclo interactivo rápido de un único agente. En el otro extremo están las campañas de largo aliento que duran horas o días, como migraciones a escala de repositorio o construcción de subsistemas completos.
+
+Entre ambos extremos existe una franja crítica donde un solo turno de generación suele quedarse corto: **condiciones de carrera difíciles de reproducir, optimizaciones algorítmicas, regresiones sutiles y refactorizaciones que cruzan múltiples módulos**.
+
+Para atacar exactamente ese punto medio, [Google Antigravity](https://antigravity.google/docs/boost/) incorpora el comando `/boost`: un pipeline bajo demanda de razonamiento profundo multiagente que divide el problema, ejecuta flujos de trabajo en paralelo y verifica las soluciones de manera independiente antes de entregar cualquier cambio.
+
+## El pipeline de tres fases de `/boost`
+
+Cuando invocamos `/boost <tarea>`, Antigravity desacopla la formulación de la estrategia de la ejecución aislada y de la validación final mediante una jerarquía de tres fases:
+
+<figure class="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-[#f8fafc] p-4 shadow-sm sm:p-6 dark:border-zinc-800">
+  <img
+    src={diagrama.src}
+    width={diagrama.width}
+    height={diagrama.height}
+    alt="Pipeline de tres fases de /boost en Google Antigravity: el orquestador planifica, subagentes de implementación, investigación y verificación trabajan en paralelo sobre worktrees efímeros aislados, y la síntesis valida con tests reintentando con diagnósticos hasta entregar cambios verificados."
+    loading="lazy"
+    class="w-full h-auto"
+  />
+  <figcaption class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-3 font-mono text-xs text-slate-600">
+    <span>Pipeline de tres fases de /boost en Google Antigravity</span>
+    <a href="https://antigravity.google/docs/boost/" target="_blank" rel="noopener" class="underline hover:text-sky-700">
+      Fuente: antigravity.google/docs/boost ↗
+    </a>
+  </figcaption>
+</figure>
+
+### Fase 1 · Estrategia y formulación de objetivos
+
+El **orquestador principal** recibe el prompt, inspecciona el contexto del workspace y diseña una estrategia de ejecución. En lugar de intentar editar archivos de inmediato, descompone el desafío técnico en subtareas discretas y verificables, determinando qué flujos de trabajo especializados se necesitan para abordar el problema.
+
+### Fase 2 · Ejecución paralela y verificación local
+
+Una vez definido el plan, el orquestador despacha las subtareas hacia subagentes especializados que operan en paralelo sobre **worktrees efímeros aislados**:
+
+1. **Implementación (`código · refactor · tests`):** construye soluciones candidatas, aplica refactorizaciones estructurales y genera pruebas unitarias para cubrir el nuevo comportamiento.
+2. **Investigación (`root cause · solo lectura`):** realiza *debugging* de causa raíz, traza grafos de ejecución y analiza dependencias complejas sin modificar ningún archivo del proyecto.
+3. **Verificación local (`build + test suites`):** ejecuta los *targets* de compilación y las suites de pruebas localmente dentro de cada ámbito aislado para validar o descartar hipótesis antes de reportar resultados al orquestador.
+
+<Callout type="info" title="Aislamiento de contexto y de workspace">
+  Cada subagente trabaja en su propio espacio de memoria y sobre un <em>worktree</em> efímero aislado. Esto evita conflictos de edición simultánea y mantiene limpio el historial de tu conversación principal, sin contaminarlo con trazas de depuración extensas ni <em>diffs</em> descartados durante la exploración.
+</Callout>
+
+### Fase 3 · Síntesis y entrega verificada
+
+Antes de presentar el resultado final, el pipeline entra en una etapa de convergencia y control de calidad:
+
+- **Síntesis (`regresión + bordes`):** el orquestador integra los hallazgos de los subagentes y evalúa la solución combinada frente a la suite completa de pruebas y casos de borde (*edge cases*).
+- **Ciclo de retroalimentación (`DIAGNÓSTICO → RONDA N+1`):** si alguna aserción o prueba falla (`¿Tests pasan? → NO`), los diagnósticos de error se reinyectan automáticamente en una nueva iteración para corregir el problema sin intervención manual.
+- **Entrega verificada:** únicamente cuando todas las pruebas y requisitos pasan (`¿Tests pasan? → SÍ`), `/boost` entrega un resumen conciso junto con los cambios ya verificados.
+
+## Cuándo usar `/boost` frente a otros modos
+
+En arquitectura de agentes —igual que en sistemas distribuidos— elegir el mecanismo de coordinación correcto depende del horizonte de la tarea y del costo de verificación. Así se compara `/boost` con el agente por defecto y con `/teamwork`:
+
+| Dimensión | Agente por defecto | 🚀 Boost (`/boost`) | 👥 Teamwork (`/teamwork`) |
+| :--- | :--- | :--- | :--- |
+| **Foco principal** | Programación interactiva y *pair programming* | Razonamiento profundo y bugs complejos | Equipos autónomos de agentes por varios días |
+| **Horizonte de tarea** | Segundos a minutos | Segundos a horas | Horas a días |
+| **Fase de *scoping*** | Un único prompt | Ejecución inmediata | Entrevista de alcance en dos fases |
+| **Arquitectura** | Ciclo directo de un solo agente | Jerarquía de razonamiento en 3 fases | Equipos multi-rol con orquestación persistente |
+| **Modelo de workspace** | Árbol de trabajo compartido | *Worktrees* efímeros aislados | *Worktrees* aislados persistentes por hito |
+| **Verificación** | Chequeo de herramientas en un paso | Verificación independiente multi-ronda | Falsación adversarial y auditoría independiente |
+| **Ideal para** | Desarrollo de features, navegación de código y flujo general | *Race conditions*, optimización algorítmica y refactors multi-archivo | Construcción de subsistemas, pruebas formales y migraciones masivas |
+
+## Casos de uso donde `/boost` marca la diferencia
+
+Puedes invocar `/boost` tanto desde la aplicación de escritorio (**Antigravity App**) como desde la interfaz de terminal (**Antigravity CLI**) anteponiendo el comando a tu instrucción. Cuatro escenarios donde este patrón brilla especialmente:
+
+### 1. Concurrencia y condiciones de carrera
+
+Los problemas de *timing* multihilo, *deadlocks* intermitentes o inconsistencias de caché suelen requerir analizar trazas en paralelo mientras otro flujo intenta reproducir el fallo con tests de estrés:
+
+```text
+/boost Reproduce and fix the intermittent deadlock in the connection pool during high connection turnover.
+```
+
+### 2. Resolución algorítmica y alto rendimiento
+
+Cuando necesitamos implementar estructuras de datos específicas, algoritmos de grafos o vectorización con garantías estrictas en los casos límite y benchmarks verificables:
+
+```text
+/boost Optimize the matrix transposition algorithm to use SIMD vectorization and benchmark throughput.
+```
+
+### 3. Refactorizaciones no triviales
+
+Desacoplar módulos críticos o migrar contratos síncronos a patrones asíncronos a lo largo de decenas de archivos sin romper rutas existentes:
+
+```text
+/boost Refactor the authentication middleware to use asynchronous token validation without breaking existing routes.
+```
+
+### 4. Investigación profunda de causa raíz (*Root-Cause Analysis*)
+
+También es posible usar `/boost` exclusivamente como herramienta de diagnóstico sobre bases de código grandes o desconocidas, pidiendo explícitamente no modificar archivos:
+
+```text
+/boost Trace why HTTP request timeouts spike when batch payload size exceeds 2MB, without modifying code.
+```
+
+## Gobernanza, permisos y seguridad
+
+Un punto clave al adoptar flujos multiagente en equipos de ingeniería es que la autonomía de ejecución no implique perder el control sobre el entorno:
+
+- **Permisos acotados (*Scoped permissions*):** todos los subagentes heredan estrictamente las reglas de acceso a archivos y políticas de ejecución de comandos configuradas para el workspace o proyecto activo.
+- **Aprobaciones interactivas:** si un subagente propone ejecutar un comando de terminal protegido o editar un archivo fuera de los ámbitos de confianza, la solicitud de autorización se eleva inmediatamente a la interfaz del desarrollador para su confirmación.
+
+<Callout type="tip" title="Para quedarte con una idea">
+  <code>/boost</code> lleva el principio de <em>divide, verifica en aislamiento e integra con pruebas</em> directamente al flujo interactivo de desarrollo. En lugar de pedirle más intentos manuales a un único contexto saturado, delega la exploración a subagentes efímeros y convierte a la suite de tests en la condición de salida obligatoria.
+</Callout>
+
+Puedes revisar la documentación oficial completa en [antigravity.google/docs/boost](https://antigravity.google/docs/boost/).
